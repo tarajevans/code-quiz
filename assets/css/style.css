@@ -1,3 +1,8 @@
+:root {
+    --primary-color: #E6E5AE;
+    --secondary-color: #99595A;
+    --tertiary-color: #E69C9D;
+  }
 * {
     font-family:sans-serif;
     box-sizing: border-box;
@@ -6,7 +11,21 @@
     display:flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #39a6b2;
-    color: #024e76;
     padding: 20px 35px;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+.btn {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    border: solid;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+  } 
+.quiz {
+    text-align: center;
+    font-weight: bold;
+    font-size: 48px;
+    background-color: var(--tertiary-color);
 }
