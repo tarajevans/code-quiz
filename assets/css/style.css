@@ -1,0 +1,12 @@
+* {
+    font-family:sans-serif;
+    box-sizing: border-box;
+}
+.score-timer{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #39a6b2;
+    color: #024e76;
+    padding: 20px 35px;
+}
