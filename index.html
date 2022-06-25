@@ -13,20 +13,25 @@
         <div class="score-timer">
               <!--High Scores -->
              <div class="high-scores">
-                <button class="btn" id="check-scores" a href="./scores.html">View High Scores</button>
+                <a href="./scores.html"><button class="btn" id="check-scores">View High Scores</button></a>
             </div>
              <!-- Timer section -->
             <div class="Timer">Time left: 75 s
-                <button name = "testButton">Test</button>
-                <button name = "startCountDown">Count Down</button>
+
             </div>
         </div>
     </header>
-    <main>
+    <div>
         <!-- quiz -->
         <h1 class="quiz">Code Quiz</h1>
-
-    </main>
+        <div class="quizArea"></div>
+            <div class="questionsDiv" id="questions"></div>
+            <div class="answersArea" id="answers"></div>
+                <ul class="answerOL" id="answerOL"></ul>
+        <button name = "testButton">Test</button>
+        <button name = "startCountDown">Count Down</button>
+        
+    </div>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
