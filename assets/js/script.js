@@ -16,70 +16,70 @@ var startCountdown = setInterval(countdown, 1000);
 // an array to store the questions
 // Reference to Questions and Answers taken from Michael Rudolph/ReindeerCode https://github.com/ReindeerCode/Web-APIs-Code-Quiz/blob/master/JS/questions.js
 var questions = [
-    'Question 1'="Which one is a looping structure in JavaScript?", 
-    'Question 2'="What are the two basic groups of data types in JavaScript?", 
-    'Question 3'="Commonly used data types DO NOT include:", 
-    'Question 4'="Boolean operators that can be used in JavaScript include:", 
-    'Question 5'="Which one of these is not among the three different types of errors in JavaScript?",'Question 6'="What is the data type of variables in JavaScript?", 
-    'Question 7'="The condition in an if / else statement is enclosed within ____.", 
-    'Question 8'="Arrays in JavaScript can be used to store ____.",
-    'Question 9'="String values must be enclosed within ____ when being assigned to variables.",
-    'Question 10'="What is the type of Pop up boxes available in JavaScript?:"
+    ["Which one is a looping structure in JavaScript?", 0],
+    ["What are the two basic groups of data types in JavaScript?", 1],
+    ["Commonly used data types DO NOT include:", 2],
+    ["Boolean operators that can be used in JavaScript include:", 3],
+    ["Which one of these is not among the three different types of errors in JavaScript?", 0],
+    ["What is the data type of variables in JavaScript?", 0],
+    ["The condition in an if / else statement is enclosed within ____.", 2],
+    ["Arrays in JavaScript can be used to store ____.", 3],
+    ["String values must be enclosed within ____ when being assigned to variables.", 2],
+    ["What is the type of Pop up boxes available in JavaScript?:", 3],
 ];
 // an array to store the answer choices
 var answers = [
-    ['question 1 answer 1'="All the below", 
-    'question 1 answer 2'="For", 
-    'question 1 answer 3'="While", 
-    'question 1 answer 4'="do-while loops"], 
+    ["All the below", 
+    "For", 
+    "While", 
+    "do-while loops"], 
     //Correct = "All the below"
-    ['question 2 answer 1'="Primitive and attribute", 
-    'question 2 answer 2'="Primitive and reference types", 
-    'question 2 answer 3'="Reference types and attribute", 
-    'question 2 answer 4'="None of the above"], 
+    ["Primitive and attribute", 
+    "Primitive and reference types", 
+    "Reference types and attribute", 
+    "None of the above"], 
     //Correct = "Primitive and reference types"
-    ['question 3 answer 1'="strings", 
-    'question 3 answer 2'="booleans", 
-    'question 3 answer 3'="alerts", 
-    'question 3 answer 4'="numbers"],
+    ["strings", 
+    "booleans", 
+    "alerts", 
+    "numbers"],
     //Correct ="alerts"
-    ['question 4 answer 1'="'And' Operator &&", 
-    'question 4 answer 2'="'Or' Operator ||", 
-    'question 4 answer 3'="'Not' Operator !", 
-    'question 4 answer 4'="All the above"], 
+    ["'And' Operator &&", 
+    "'Or' Operator ||", 
+    "'Not' Operator !", 
+    "All the above"], 
     //Correct ="All the above"
-    ['question 5 answer 1'="Animation time errors", 
-    'question 5 answer 2'="Load time errors", 
-    'question 5 answer 3'="Run time errors", 
-    'question 5 answer 4'="Logical Errors"], 
+    ["Animation time errors", 
+    "Load time errors", 
+    "Run time errors", 
+    "Logical Errors"], 
     //Correct="Animation time errors"
-    ['question 6 answer 1'= "Object data types", 
-    'question 6 answer 2'="Function data type", 
-    'question 6 answer 3'="None of the above", 
-    'question 6 answer 4'="All of the above"],
+    ["Object data types", 
+    "Function data type", 
+    "None of the above", 
+    "All of the above"],
     //Correct="Object data types"
-    ['question 7 answer 1'="quotes", 
-    'question 7 answer 2'="curly brackets", 
-    'question 7 answer 3'="parentheses", 
-    'question 7 answer 4'="square brackets"],
+    ["quotes", 
+    "curly brackets", 
+    "parentheses", 
+    "square brackets"],
     //Correct="parentheses"
-    ['question 8 answer 1'="numbers and strings", 
-    'question 8 answer 2'="other arrays", 
-    'question 8 answer 3'="booleans", 
-    'question 8 answer 4'="all of the above"], 
+    ["numbers and strings", 
+    "other arrays", 
+    "booleans", 
+    "all of the above"], 
     //Correct="all of the above"
-    ['question 9 answer 1'="commas", 
-    'question 9 answer 2'="curly brackets", 
-    'question 9 answer 3'="quotes", 
-    'question 9 answer 4'="parentheses"],
+    ["commas", 
+    "curly brackets", 
+    "quotes", 
+    "parentheses"],
     //Correct="quotes"
-    ['question 10 answer 1'="Alert", 
-    'question 10 answer 2'="Confirm", 
-    'question 10 answer 3'="Prompt", 
-    'question 10 answer 4'="All the above"]
+    ["Alert", 
+    "Confirm",
+    "Prompt", 
+    "All the above"]
     //Correct="All the above"
 ];
-var correctAnswers = [['question 1', 2], ['question 2', 0], ['question 3', 1]];
 // Create Buttons
 var testButton = document.querySelector("button[name='testButton']");
 var countDownButton = document.querySelector("button[name='startCountDown']");
@@ -87,8 +87,10 @@ var countDownButton = document.querySelector("button[name='startCountDown']");
 // A function to test code with 
 function testFunct(){
     penalty();
-    console.log(questions[0] + " possible answers: "+ answers[0][0]+ " " + answers[0][1]+ " " + answers[0][2] + ' correct answer' + correctAnswers[0][1]);
-    console.log(questions[0] + " possible answers: "+ answers[0]+ ' correct answer' + correctAnswers[0][1]);
+
+}
+for (var questionIndex=0; questionIndex < questions.length; questionIndex ++) {
+    console.log (questions [questionIndex] [0] + answers [questionIndex] + questions [questionIndex] [1]);
 }
 
 // penalty for wrong answer
