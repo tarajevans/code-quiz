@@ -3,7 +3,7 @@ var questionIndex=0;
 var questionTextArea = document.querySelector("#questions");
 var timerDisplay = document.querySelector("#timer");
 var answerDisplayArea = document.querySelector("#answers");
-var answerOL = document.querySelector("answerOL");
+var answerOL = document.querySelector("#answerOL");
 
 function countDown(){
 
@@ -76,41 +76,62 @@ var questions = [
 // main function to control test
 function startTest() {
     counter = 75;
-    countdown();
+    countDown();
 
     displayQuestion(questionIndex);
     displayAnswers(questionIndex);
     advanceQuestionIndex();
 }
+//check to see if correct answer selected
 function checkCorrectAnswer(qIndex, selectedAnswer) {
     corAnswer = questions[qIndex].correct;
 if (selectedAnswer === corAnswer) {
-    console.log("Correct!")
+    console.log("Correct!");
     } else {
         console.log("Incorrect!");
     }
 
 }
+//listing answer for current question
+function displayAnswers(qIndex){
+    var answerChoices = questions[qIndex].answers;
+
+    answerChoices.forEach(function(answerText){
+
+    var answerListItem = document.createElement("li");
+    answerListItem.textContent = answerText;
+    answerOL.appendChild(answerListItem);
+   })
+}
+
 // Create Buttons
 var testButton = document.querySelector("button[name='testButton']");
 var countDownButton = document.querySelector("button[name='startCountDown']");
 
+//display question based on question index
 function displayQuestion(qIndex) {
-    questionTextArea.value = questions[qIndex][0];
+    questionTextArea.textContent = questions[qIndex].question;
 }
+// next question
+function advanceQuestionIndex() {
+
+    if (questionIndex < questions.length - 1) {
+        questionIndex ++;
+        }else if (questionIndex >= questions.length) {
+            questionIndex = questions.length -1;
+        }
+}
+
 // A function to test code with 
 function testFunct(){
     penalty();
-
+    //console.log(questions.length);
 }
-
-
 // penalty for wrong answer
 function penalty(){
     counter -= 10;
 }
 
 // Create Button listeners
-
-testButton.addEventListener("click", testFunct); //calls the test function when clicked
+testButton.addEventListener("click", startTest); //calls the test function when clicked
 countDownButton.addEventListener("click", countDown); //calls the countDown function when clicked
