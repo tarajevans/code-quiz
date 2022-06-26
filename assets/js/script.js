@@ -89,17 +89,17 @@ function checkCorrectAnswer(event) {
     var chosenAnswer = event.target;
     if (chosenAnswer.matches("li")) {
 
-    }
-    if (chosenAnswer.textContent === questions[questionIndex].correct) {
-        console.log ("Correct!");
 
-        score ++;
+        if (chosenAnswer.textContent === questions[questionIndex].correct) {
+            console.log ("Correct!");
+
+            score ++;
         
-    }else{
-        console.log("Incorrect!");
-
-        advanceQuestionIndex();
+        }else{
+            console.log("Incorrect!");
+        }
     }
+
     advanceQuestionIndex();
     var answersOrderedList = document.querySelector("#answersOL");
     answersOrderedList.remove();
@@ -107,24 +107,24 @@ function checkCorrectAnswer(event) {
 }
 
 
-
-
 //listing answer for current question
 function displayAnswers(qIndex){
-    var answersOl = document.createElement("ol");
-    answersOl.setAttribute("id", "answersOL");
-    answerDisplayArea.appendChild(answersOl);
     var answerChoices = questions[qIndex].answers;
-    answerChoices.forEach(function(answerText){
 
-    var answerListItem = document.createElement("li");
-    answerListItem.textContent = answerText;
-    answerListItem.setAttribute("class", "list-button");
-    answerListItem.addEventListener("click", checkCorrectAnswer);
+var tempAnswersOl = document.createElement("ol");
 
-    answersOl.appendChild(answerListItem);
+tempAnswersOl.setAttribute("id", "tempAnswersDiv");
+answerDisplayArea.appendChild(tempAnswersOl);
 
-   })
+answerChoices.forEach(function(answerText){
+    var buttonLi = document.createElement("li");
+    var answerButton = document.createElement("button");
+    answerButton.textContent = answerText;
+    answerButton.setAttribute("class", "answerButton");
+    answerButton.addEventListener("click", checkCorrectAnswer);
+    buttonLi.appendChild(answerButton);
+    tempAnswersOl.appendChild(buttonLi);    
+})
 }
 
 //display question based on question index
