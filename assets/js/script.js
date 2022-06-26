@@ -77,6 +77,7 @@ var questions = [
 
 // main function to control test
 function startTest() {
+    loadHighScores();
     startButton.remove();
     countDown();
     displayQuestionAndAnswer();
@@ -131,7 +132,7 @@ function advanceQuestionIndex() {
 
     if (questionIndex < questions.length - 1) {
         questionIndex ++;
-        }else if (questionIndex >= questions.length) {
+        }else {
             finalScore();
         }
 }
@@ -153,6 +154,16 @@ function finalScore() {
     localStorage.setItem("highScores", highScoresString); //store highScores in local storage as a string
 }
 //get from local storage
+function loadHighScores() {
+highScores = JSON.parse (localStorage.getItem("highScores"));
+sortArray ();
+}
+function sortArray() {
+    highScores.sort(function(a,b) {
+        return a[1] - b[1];
+    });
+    highScores.reverse();
+}
 
 // Create Button listeners
 startButton.addEventListener("click", startTest); //calls the test function when clicked
