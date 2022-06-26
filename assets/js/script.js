@@ -5,6 +5,7 @@ var timerDisplay = document.querySelector("#timer");
 var answerDisplayArea = document.querySelector("#answers");
 var startButton = document.querySelector("#startButton");
 var score = 0;
+var highScores = [];
 
 function countDown(){
 
@@ -87,17 +88,11 @@ function displayQuestionAndAnswer() {
 //check to see if correct answer selected
 function checkCorrectAnswer(event) {
     var chosenAnswer = event.target;
-    if (chosenAnswer.matches("li")) {
-
-
-        if (chosenAnswer.textContent === questions[questionIndex].correct) {
+           if (chosenAnswer.textContent === questions[questionIndex].correct) {
             console.log ("Correct!");
-
             score ++;
-        
-        }else{
+                }else{
             console.log("Incorrect!");
-        }
     }
 
     advanceQuestionIndex();
@@ -120,7 +115,7 @@ answerChoices.forEach(function(answerText){
     var buttonLi = document.createElement("li");
     var answerButton = document.createElement("button");
     answerButton.textContent = answerText;
-    answerButton.setAttribute("class", "answerButton");
+    answerButton.setAttribute("class", "startButton");
     answerButton.addEventListener("click", checkCorrectAnswer);
     buttonLi.appendChild(answerButton);
     tempAnswersOl.appendChild(buttonLi);    
@@ -137,7 +132,7 @@ function advanceQuestionIndex() {
     if (questionIndex < questions.length - 1) {
         questionIndex ++;
         }else if (questionIndex >= questions.length) {
-            questionIndex = questions.length -1;
+            finalScore();
         }
 }
 
@@ -150,6 +145,14 @@ function testFunct(){
 function penalty(){
     counter -= 10;
 }
+//save to local storage
+function finalScore() {
+    var playerInitials = prompt("Your score is: " + score + ", Please enter your initials"); //capture player initials
+    highScores.push([playerInitials, score]); //add player score to high scores
+    var highScoresString=JSON.stringify(highScores); //turn highScores[] into a string
+    localStorage.setItem("highScores", highScoresString); //store highScores in local storage as a string
+}
+//get from local storage
 
 // Create Button listeners
 startButton.addEventListener("click", startTest); //calls the test function when clicked

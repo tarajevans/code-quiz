@@ -24,14 +24,16 @@
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 10px;
+    cursor: pointer;
   } 
 .quiz {
     text-align: center;
     font-weight: bold;
     font-size: 60px;
     background-color: var(--tertiary-color);
-    margin: 10px;
-    padding: 10px,0;
+    border-radius: 10px;
+    margin: 0;
+    padding: 10px, 20;
 }
 .list-button {
   background: var(--primary-color);
@@ -39,15 +41,28 @@
   font-weight: bold;
 }
 .startButton {
+  
+  text-align: center;
   color: var(--primary-color);
   background-color: var(--secondary-color);
   border: solid;
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 10px;
+  cursor: pointer;
 }
 .questionsDiv {
   background: var(--primary-color);
   text-align: center;
   font-size: 40px;
+}
+#answers {
+  text-align: center;
+  color: var(--primary-color);
+  background-color: var(--tertiary-color);
+  border: solid;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
 }
