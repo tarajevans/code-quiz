@@ -101,8 +101,8 @@ function checkCorrectAnswer(event) {
     }
 
     advanceQuestionIndex();
-    var answersOrderedList = document.querySelector("#answersOL");
-    answersOrderedList.remove();
+    var tempAnswerOl = document.querySelector("#tempAnswersDiv");
+    tempAnswerOl.remove();
     displayQuestionAndAnswer();
 }
 
