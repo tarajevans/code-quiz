@@ -4,6 +4,7 @@ var questionTextArea = document.querySelector("#questions");
 var timerDisplay = document.querySelector("#timer");
 var answerDisplayArea = document.querySelector("#answers");
 var startButton = document.querySelector("#startButton");
+var score = 0;
 
 function countDown(){
 
@@ -24,60 +25,62 @@ var startCountdown = setInterval(countdown, 1000);
 var questions = [
     {
         question: "Which one is a looping structure in JavaScript?",
-        answers: ["All the below", "For", "While", "do-while loops"],
-        correct: "All the below"
+        answers: ["All the Below", "For", "While", "Do-while loops"],
+        correct: "All the Below"
     },
     {
         question: "What are the two basic groups of data types in JavaScript?", 
-        answers: ["Primitive and attribute", "Primitive and reference types", "Reference types and attribute", "None of the above"],
-        correct: "Primitive and reference types"
+        answers: ["Primitive and Attribute", "Primitive and Reference Types", "Reference Types and Attribute", "None of the Above"],
+        correct: "Primitive and Reference Types"
     },
     {
         question: "Commonly used data types DO NOT include:", 
-        answers: ["strings", "booleans", "alerts", "numbers"],
-        correct: "alerts"
+        answers: ["Strings", "Booleans", "Alerts", "Numbers"],
+        correct: "Alerts"
     },
     {
         question: "Boolean operators that can be used in JavaScript include:", 
-        answers: ["'And' Operator &&", "'Or' Operator ||", "'Not' Operator !", "All the above"],
-        correct: "All the above"
+        answers: ["'And' Operator &&", "'Or' Operator ||", "'Not' Operator !", "All the Above"],
+        correct: "All the Above"
     },
     {
         question: "Which one of these is not among the three different types of errors in JavaScript?", 
-        answers: ["Animation time errors", "Load time errors", "Run time errors", "Logical Errors"],
-        correct: "Animation time errors"
+        answers: ["Animation Time Errors", "Load Time Errors", "Run Time Errors", "Logical Errors"],
+        correct: "Animation Time Errors"
     },
     {
         question: "What is the data type of variables in JavaScript?", 
-        answers: ["Object data types", "Function data type", "None of the above", "All of the above"],
-        correct: "Object data types"
+        answers: ["Object Data Types", "Function Data Type", "None of the Above", "All of the Above"],
+        correct: "Object Data Types"
     },
     {
         question: "The condition in an if / else statement is enclosed within __.", 
-        answers:  ["quotes", "curly brackets", "parentheses", "square brackets"],
-        correct: "parentheses"
+        answers:  ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"],
+        correct: "Parentheses"
     },
     {
         question: "Arrays in JavaScript can be used to store __.", 
-        answers: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-        correct: "all of the above"
+        answers: ["Numbers and Strings", "Other Arrays", "Booleans", "All of the Above"],
+        correct: "All of the Above"
     },
     {
         question: "String values must be enclosed within __ when being assigned to variables.", 
-        answers: ["commas", "curly brackets", "quotes", "parentheses"],
-        correct: "quotes"
+        answers: ["Commas", "Curly Brackets", "Quotes", "Parentheses"],
+        correct: "Quotes"
     },
     {
         question: "What is the type of Pop up boxes available in JavaScript?:", 
-        answers: ["Alert",  "Confirm", "Prompt", "All the above"], 
-        correct: "All the above"
+        answers: ["Alert",  "Confirm", "Prompt", "All the Above"], 
+        correct: "All the Above"
     }];
 
 // main function to control test
 function startTest() {
-    counter = 75;
+    startButton.remove();
     countDown();
-
+    displayQuestionAndAnswer();
+}
+function displayQuestionAndAnswer() {
     displayQuestion(questionIndex);
     displayAnswers(questionIndex);
 }
@@ -89,17 +92,27 @@ function checkCorrectAnswer(event) {
     }
     if (chosenAnswer.textContent === questions[questionIndex].correct) {
         console.log ("Correct!");
+
+        score ++;
         
     }else{
         console.log("Incorrect!");
 
         advanceQuestionIndex();
     }
+    advanceQuestionIndex();
+    var answersOrderedList = document.querySelector("#answersOL");
+    answersOrderedList.remove();
+    displayQuestionAndAnswer();
 }
+
+
+
 
 //listing answer for current question
 function displayAnswers(qIndex){
     var answersOl = document.createElement("ol");
+    answersOl.setAttribute("id", "answersOL");
     answerDisplayArea.appendChild(answersOl);
     var answerChoices = questions[qIndex].answers;
     answerChoices.forEach(function(answerText){

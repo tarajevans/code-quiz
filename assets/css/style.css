@@ -7,6 +7,7 @@
     font-family:sans-serif;
     box-sizing: border-box;
     color: var(--secondary-color);
+    background-color: #E6E5AE;
 }
 .score-timer{
     display:flex;
@@ -27,12 +28,26 @@
 .quiz {
     text-align: center;
     font-weight: bold;
-    font-size: 48px;
+    font-size: 60px;
     background-color: var(--tertiary-color);
+    margin: 10px;
+    padding: 10px,0;
 }
 .list-button {
-  text-align: center;
   background: var(--primary-color);
   line-height: 1.5;
+  font-weight: bold;
 }
-  
+.startButton {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  border: solid;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+.questionsDiv {
+  background: var(--primary-color);
+  text-align: center;
+  font-size: 40px;
+}
