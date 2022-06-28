@@ -90,10 +90,11 @@ function displayQuestionAndAnswer() {
 function checkCorrectAnswer(event) {
     var chosenAnswer = event.target;
            if (chosenAnswer.textContent === questions[questionIndex].correct) {
-            console.log ("Correct!");
+            showCorrectSnackbar(); // calls the snackbar for being correct
             score ++;
                 }else{
-            console.log("Incorrect!");
+                    penalty(); // applies a wrong answer penalty 
+                    showInCorrectSnackbar();  // calls the snackbar for being incorrect
     }
 
     advanceQuestionIndex();
@@ -134,14 +135,10 @@ function advanceQuestionIndex() {
         questionIndex ++;
         }else {
             finalScore();
+            window.location.href = "./scores.html"; // navigates the user to the scores page after collecting their initials
         }
 }
 
-// A function to test code with 
-function testFunct(){
-    penalty();
-    //console.log(questions.length);
-}
 // penalty for wrong answer
 function penalty(){
     counter -= 10;
@@ -151,9 +148,9 @@ function finalScore() {
     var playerInitials = prompt("Your score is: " + score + ", Please enter your initials"); //capture player initials
     highScores.push([playerInitials, score]); //add player score to high scores
     var highScoresString=JSON.stringify(highScores); //turn highScores[] into a string
-    localStorage.setItem("highScores", highScoresString); //store highScores in local storage as a string
+    localStorage.setItem("highScores",JSON.stringify(highScores); //store highScores in local storage as a string
 }
-//get from local storage
+//get from local and store in highScores
 function loadHighScores() {
 highScores = JSON.parse (localStorage.getItem("highScores"));
 sortArray ();
@@ -163,6 +160,30 @@ function sortArray() {
         return a[1] - b[1];
     });
     highScores.reverse();
+}
+
+//show the snackbar for a correct answer
+function showCorrectSnackbar(){
+    // Get the snackbar DIV
+     var correctSnackbar = document.querySelector("#correctSnackbar");
+   
+     // Add the "show" class to DIV
+     correctSnackbar.className = "show";
+   
+     // After 3 seconds, remove the show class from DIV
+     setTimeout(function(){ correctSnackbar.className = correctSnackbar.className.replace("show", ""); }, 1000);
+}
+
+//show the snackbar for a incorrect answer
+function showIncorrectSnackbar(){
+ // Get the snackbar from index.hmtl
+  var incorrectSnackbar = document.querySelector("#incorrectSnackbar");
+
+  // Add the "show" class to the snackbar
+  incorrectSnackbar.className = "show";
+
+  // After 3 seconds, remove the show class from the snackbar
+  setTimeout(function(){ incorrectSnackbar.className = incorrectSnackbar.className.replace("show", ""); }, 1000);
 }
 
 // Create Button listeners
