@@ -148,7 +148,7 @@ function finalScore() {
     var playerInitials = prompt("Your score is: " + score + ", Please enter your initials"); //capture player initials
     highScores.push([playerInitials, score]); //add player score to high scores
     var highScoresString=JSON.stringify(highScores); //turn highScores[] into a string
-    localStorage.setItem("highScores",JSON.stringify(highScores); //store highScores in local storage as a string
+    localStorage.setItem("highScores",JSON.stringify(highScores)); //store highScores in local storage as a string
 }
 //get from local and store in highScores
 function loadHighScores() {
