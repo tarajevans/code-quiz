@@ -12,8 +12,8 @@ function countDown(){
 var countdown = function () {
     timerDisplay.textContent= "Time Left: " + counter +"s";
     counter--;
-    if(counter === 0) {
-        console.log("Time's Up!");
+    if(counter <= 0) {
+        finalScore(); // triggers the end of quiz when time runs out
         clearInterval(startCountdown);
     };
 };
@@ -94,7 +94,7 @@ function checkCorrectAnswer(event) {
             score ++;
                 }else{
                     penalty(); // applies a wrong answer penalty 
-                    showInCorrectSnackbar();  // calls the snackbar for being incorrect
+                    showIncorrectSnackbar();  // calls the snackbar for being incorrect
     }
 
     advanceQuestionIndex();

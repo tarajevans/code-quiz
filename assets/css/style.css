@@ -35,6 +35,10 @@
     margin: 0;
     padding: 10px, 20;
 }
+#tempAnswersDiv {
+  list-style-type: none
+}
+
 .list-button {
   background: var(--primary-color);
   line-height: 1.5;
