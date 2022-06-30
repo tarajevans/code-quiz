@@ -1,11 +1,12 @@
 var highScores = [];
 
 
-function loadHighScores(){
-    //get from local storage, parse it back into an array and store in highScores[]
-    highScores = JSON.parse(localStorage.getItem('highScores'));
-    //calls the sortArray function from below
-    sortArray();
+function loadHighScores() {
+    var storageReturn=localStorage.getItem("highScores");
+    if (storageReturn==null) {
+        console.log("Highscores not found in local storage");
+        } else {highScores = JSON.parse (storageReturn);
+sortArray ();}
 }
 
 // organizes the highScore Array to display highest sccore first

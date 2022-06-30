@@ -152,8 +152,11 @@ function finalScore() {
 }
 //get from local and store in highScores
 function loadHighScores() {
-highScores = JSON.parse (localStorage.getItem("highScores"));
-sortArray ();
+    var storageReturn=localStorage.getItem("highScores");
+    if (storageReturn==null) {
+        console.log("Highscores not found in local storage");
+        } else {highScores = JSON.parse (storageReturn);
+sortArray ();}
 }
 function sortArray() {
     highScores.sort(function(a,b) {
