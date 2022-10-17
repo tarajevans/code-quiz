@@ -3,10 +3,10 @@ var highScores = [];
 
 function loadHighScores() {
     var storageReturn=localStorage.getItem("highScores");
-    if (storageReturn==null) {
-        console.log("Highscores not found in local storage");
+        if (storageReturn==null) {
+            console.log("Highscores not found in local storage");
         } else {highScores = JSON.parse (storageReturn);
-sortArray ();}
+            sortArray ();}
 }
 
 // organizes the highScore Array to display highest sccore first

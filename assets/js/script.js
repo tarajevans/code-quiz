@@ -12,10 +12,10 @@ function countDown(){
 var countdown = function () {
     timerDisplay.textContent= "Time Left: " + counter +"s";
     counter--;
-    if(counter <= 0) {
-        finalScore(); // triggers the end of quiz when time runs out
+        if(counter <= 0) {
+            finalScore(); // triggers the end of quiz when time runs out
         clearInterval(startCountdown);
-    };
+        };
 };
 
 var startCountdown = setInterval(countdown, 1000);
@@ -82,20 +82,22 @@ function startTest() {
     countDown();
     displayQuestionAndAnswer();
 }
+
 function displayQuestionAndAnswer() {
     displayQuestion(questionIndex);
     displayAnswers(questionIndex);
 }
+
 //check to see if correct answer selected
 function checkCorrectAnswer(event) {
     var chosenAnswer = event.target;
-           if (chosenAnswer.textContent === questions[questionIndex].correct) {
+            if (chosenAnswer.textContent === questions[questionIndex].correct) {
             showCorrectSnackbar(); // calls the snackbar for being correct
             score ++;
                 }else{
                     penalty(); // applies a wrong answer penalty 
                     showIncorrectSnackbar();  // calls the snackbar for being incorrect
-    }
+                }
 
     advanceQuestionIndex();
     var tempAnswerOl = document.querySelector("#tempAnswersDiv");
@@ -128,6 +130,7 @@ answerChoices.forEach(function(answerText){
 function displayQuestion(qIndex) {
     questionTextArea.textContent = questions[qIndex].question;
 }
+
 // next question
 function advanceQuestionIndex() {
 
@@ -143,6 +146,7 @@ function advanceQuestionIndex() {
 function penalty(){
     counter -= 10;
 }
+
 //save to local storage
 function finalScore() {
     var playerInitials = prompt("Your score is: " + score + ", Please enter your initials"); //capture player initials
@@ -150,6 +154,7 @@ function finalScore() {
     var highScoresString=JSON.stringify(highScores); //turn highScores[] into a string
     localStorage.setItem("highScores",JSON.stringify(highScores)); //store highScores in local storage as a string
 }
+
 //get from local and store in highScores
 function loadHighScores() {
     var storageReturn=localStorage.getItem("highScores");
@@ -158,6 +163,7 @@ function loadHighScores() {
         } else {highScores = JSON.parse (storageReturn);
 sortArray ();}
 }
+
 function sortArray() {
     highScores.sort(function(a,b) {
         return a[1] - b[1];
@@ -179,14 +185,14 @@ function showCorrectSnackbar(){
 
 //show the snackbar for a incorrect answer
 function showIncorrectSnackbar(){
- // Get the snackbar from index.hmtl
-  var incorrectSnackbar = document.querySelector("#incorrectSnackbar");
+    // Get the snackbar from index.hmtl
+    var incorrectSnackbar = document.querySelector("#incorrectSnackbar");
 
-  // Add the "show" class to the snackbar
-  incorrectSnackbar.className = "show";
+    // Add the "show" class to the snackbar
+    incorrectSnackbar.className = "show";
 
-  // After 3 seconds, remove the show class from the snackbar
-  setTimeout(function(){ incorrectSnackbar.className = incorrectSnackbar.className.replace("show", ""); }, 1000);
+    // After 3 seconds, remove the show class from the snackbar
+    setTimeout(function(){ incorrectSnackbar.className = incorrectSnackbar.className.replace("show", ""); }, 1000);
 }
 
 // Create Button listeners
